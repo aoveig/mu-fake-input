@@ -20,7 +20,8 @@
   "exports": {
     ".": {
       "import": "./dist/mu-fake-input.js",
-      "require": "./dist/mu-fake-input.umd.cjs"
+      "require": "./dist/mu-fake-input.umd.cjs",
+      "types": "./dist/components/FakeInput.vue.d.ts"
     },
     "./style.css": "./dist/style.css"
   },
