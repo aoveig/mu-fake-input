@@ -1,7 +1,7 @@
 {
   "name": "mu-fake-input",
   "private": false,
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "JsMuYun",
   "description": "一个类似于手机验证码输入的输入框",
   "keywords": [
@@ -9,8 +9,8 @@
     "input",
     "verification code"
   ],
-  "homepage": "",
-  "bugs": "",
+  "homepage": "https://github.com/aoveig/mu-fake-input",
+  "bugs": "https://github.com/aoveig/mu-fake-input/issues",
   "type": "module",
   "files": [
     "dist"
