@@ -13,6 +13,12 @@ const config = ref({
 <template>
   <div>
     <div>{{ value }}</div>
-    <FakeInput v-model="value" type="frame" :quantity="4" :config="config" />
+    <FakeInput
+      v-model="value"
+      type="frame"
+      :quantity="4"
+      :config="config"
+      inputKeys="all"
+    />
   </div>
 </template>

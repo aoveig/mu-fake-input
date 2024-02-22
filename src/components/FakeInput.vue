@@ -11,6 +11,7 @@ export interface PropsType {
     fontSize: number; // 输入字体大小
     spacing: number; // 输入框间距
   };
+  inputKeys?: "numeric" | "letter" | "all";
 }
 
 const props = withDefaults(defineProps<PropsType>(), {
@@ -21,7 +22,8 @@ const props = withDefaults(defineProps<PropsType>(), {
     height: 25,
     fontSize: 12,
     spacing: 2
-  })
+  }),
+  inputKeys: "all"
 });
 
 const emit = defineEmits(["update:modelValue"]);
@@ -88,17 +90,30 @@ const onClick = (index: number) => {
     }
   }
 };
+
+// 判断用户按下的键是否符合要求
+const isKeyValid = (e: KeyboardEvent): boolean => {
+  const key = e.key;
+  const isLetterKey = /^[a-zA-Z]$/.test(key);
+  const isNumericKey = /^[0-9]$/.test(key);
+
+  switch (props.inputKeys) {
+    case "all":
+      return isLetterKey || isNumericKey;
+    case "letter":
+      return isLetterKey;
+    case "numeric":
+      return isNumericKey;
+  }
+};
+
 // 键盘松开事件
-const onKeyup = (e: any, index: number) => {
+const onKeyup = (e: KeyboardEvent, index: number) => {
   const domNode = inputRef.value,
     currInput = domNode[index],
     nextInput = domNode[index + 1],
     lastInput = domNode[index - 1];
-  if (
-    (e.keyCode >= 65 && e.keyCode <= 90) ||
-    (e.keyCode >= 48 && e.keyCode <= 57) ||
-    (e.keyCode >= 186 && e.keyCode <= 222)
-  ) {
+  if (isKeyValid(e)) {
     if (
       index < Number(props.quantity) - 1 &&
       inputArr.value[index].value !== ""
@@ -109,20 +124,23 @@ const onKeyup = (e: any, index: number) => {
       (currInput as HTMLInputElement).focus();
       getCurrIndex(index);
     }
-  } else if (e.keyCode === 8) {
+  } else if (e.key === "Backspace") {
     if (index != 0 && inputArr.value[index].value === "") {
       (lastInput as HTMLInputElement).focus();
       getCurrIndex(index - 1);
     }
+  } else {
+    const inputElement = e.target as HTMLInputElement;
+    inputElement.value = inputElement.value.replace(
+      /./g,
+      ""
+    );
+    inputArr.value[index].value = "";
   }
 };
 // 键盘按下触发
-const onKeydown = (e: any, index: number) => {
-  if (
-    (e.keyCode >= 65 && e.keyCode <= 90) ||
-    (e.keyCode >= 48 && e.keyCode <= 57) ||
-    (e.keyCode >= 186 && e.keyCode <= 222)
-  ) {
+const onKeydown = (e: KeyboardEvent, index: number) => {
+  if (isKeyValid(e)) {
     inputArr.value[index].value = e.key;
   }
 };

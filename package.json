@@ -1,13 +1,14 @@
 {
   "name": "mu-fake-input",
   "private": false,
-  "version": "1.0.5",
+  "version": "1.0.6",
   "author": "JsMuYun",
   "description": "一个类似于手机验证码输入的输入框",
   "keywords": [
     "vue3",
     "input",
-    "verification code"
+    "verification code",
+    "验证码输入框"
   ],
   "homepage": "https://github.com/aoveig/mu-fake-input",
   "bugs": "https://github.com/aoveig/mu-fake-input/issues",

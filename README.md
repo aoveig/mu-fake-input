@@ -13,7 +13,7 @@
 4. 使用组件
    `<FakeInput v-model="value" />`
 
-组件传递的参数有：`v-model`，`quantity`，`config`，`type`
+组件传递的参数有：`v-model`，`quantity`，`config`，`type`，`inputKeys`
 
 - `v-model`:输入框绑定的值 - 必填项
 
@@ -22,6 +22,8 @@
 - `config`:输入框的配置 - 可选项
 
 - `type`:输入框的类型，目前有方形`frame`和线形`line`两种 - 可选项（默认为 frame）
+
+- `inputKeys`:输入内容的格式，`numeric`为数字，`letter`为字母，`all`为数字与字母 - 可选项（默认为 all）
 
 ```javascript
 PropsType {
@@ -34,5 +36,6 @@ PropsType {
     fontSize: number; // 输入字体大小
     spacing: number; // 输入框间距
   };
+  inputKeys?: "numeric" | "letter" | "all"; // 输入内容的格式
 }
 ```
