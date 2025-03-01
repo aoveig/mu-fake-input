@@ -9,11 +9,10 @@
 
 1. 首先引入组件
    `import FakeInput from "mu-fake-input"`
-2. 引入样式`import "mu-fake-input/style.css";`
 
-3. 定义输入框绑定的值`const value = ref("")`
+2. 定义输入框绑定的值`const value = ref("")`
 
-4. 使用组件
+3. 使用组件
    `<FakeInput v-model="value" />`
 
 组件传递的参数有：`v-model`，`quantity`，`config`，`type`，`inputKeys`
