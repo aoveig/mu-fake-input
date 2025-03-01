@@ -2,6 +2,9 @@
 
 如同手机中输入验证码的输入框
 
+[image](https://github.com/aoveig/mu-fake-input/tree/main/src/assets/1.png)
+[image](https://github.com/aoveig/mu-fake-input/tree/main/src/assets/2.png)
+
 使用方式：
 
 1. 首先引入组件
@@ -31,10 +34,10 @@ PropsType {
   modelValue: string; // v-model绑定的值
   type?: "line" | "frame"; // 输入框样式
   config?: {
-    width: number; // 输入框的宽
-    height: number; // 输入框的高
-    fontSize: number; // 输入字体大小
-    spacing: number; // 输入框间距
+    width?: number; // 输入框的宽
+    height?: number; // 输入框的高
+    fontSize?: number; // 输入字体大小
+    spacing?: number; // 输入框间距
   };
   inputKeys?: "numeric" | "letter" | "all"; // 输入内容的格式
 }

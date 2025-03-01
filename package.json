@@ -1,9 +1,8 @@
 {
   "name": "mu-fake-input",
   "private": false,
-  "version": "1.0.6",
-  "author": "JsMuYun",
-  "description": "一个类似于手机验证码输入的输入框",
+  "version": "2.0.0",
+  "description": "vue3验证码输入框组件",
   "keywords": [
     "vue3",
     "input",
@@ -16,17 +15,17 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/mu-fake-input.umd.cjs",
+  "main": "./dist/mu-fake-input.js",
   "module": "./dist/mu-fake-input.js",
+  "unpkg": "./dist/mu-fake-input.umd.cjs",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/mu-fake-input.js",
       "require": "./dist/mu-fake-input.umd.cjs",
-      "types": "./dist/components/FakeInput.vue.d.ts"
-    },
-    "./style.css": "./dist/style.css"
+      "types": "./dist/index.d.ts"
+    }
   },
-  "types": "./dist/**/*.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "vite build && vue-tsc --emitDeclarationOnly",
@@ -39,8 +38,9 @@
     "@types/node": "^20.9.4",
     "@vitejs/plugin-vue": "^4.5.0",
     "sass": "^1.69.5",
-    "typescript": "^5.2.2",
+    "typescript": "^5.8.2",
     "vite": "^5.0.0",
-    "vue-tsc": "^1.8.22"
+    "vite-plugin-css-injected-by-js": "^3.5.2",
+    "vue-tsc": "^2.2.4"
   }
 }

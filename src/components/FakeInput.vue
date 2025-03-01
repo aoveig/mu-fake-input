@@ -1,28 +1,24 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from "vue";
 
+interface ConfigType {
+  width?: number; // 输入框的宽
+  height?: number; // 输入框的高
+  fontSize?: number; // 输入字体大小
+  spacing?: number; // 输入框间距
+}
+
 export interface PropsType {
   quantity?: number | string; // 要渲染方块的数量
   modelValue: string; // v-model绑定的值
   type?: "line" | "frame"; // 输入框样式
-  config?: {
-    width: number; // 输入框的宽
-    height: number; // 输入框的高
-    fontSize: number; // 输入字体大小
-    spacing: number; // 输入框间距
-  };
+  config?: ConfigType;
   inputKeys?: "numeric" | "letter" | "all";
 }
 
 const props = withDefaults(defineProps<PropsType>(), {
   quantity: 6,
   type: "frame",
-  config: () => ({
-    width: 20,
-    height: 25,
-    fontSize: 12,
-    spacing: 2
-  }),
   inputKeys: "all"
 });
 
@@ -168,15 +164,17 @@ onMounted(() => {
         `input-style_${props.type}`,
         index === currIndex ? 'input-style--state' : ''
       ]"
-      :style="{ margin: `0px ${props.config.spacing}px` }"
+      :style="{
+        margin: `0px ${props.config?.spacing ?? 5}px`
+      }"
       :key="index"
     >
       <input
         ref="inputRef"
         :style="{
-          width: `${props.config.width}px`,
-          height: `${props.config.height}px`,
-          fontSize: `${props.config.fontSize}px`
+          width: `${props.config?.width ?? 40}px`,
+          height: `${props.config?.height ?? 50}px`,
+          fontSize: `${props.config?.fontSize ?? 16}px`
         }"
         type="text"
         v-model="item.value"
